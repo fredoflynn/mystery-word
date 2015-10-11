@@ -5,12 +5,12 @@ import re
 def read_in_words():
     """Read in words from a file."""
     with open("/usr/share/dict/words") as words:
-        words_full = words.read().upper().split('\n')
-    return words_full
+        full_word_list = words.read().upper().split('\n')
+    return full_word_list
 
 
 def choose_difficulty():
-    """Prompts user to input difficulty and returns a string"""
+    """Prompts user to input difficulty and returns a string of difficulty"""
     while True:
         user_choice = input("Choose your level [E]asy, [N]ormal, or [H]ard > ").lower()
         if user_choice == "e" or user_choice == "easy":
@@ -100,7 +100,7 @@ def is_word_complete(word, letter_list):
 
 
 def game_time():
-    """Run a Hangman Game. Requires guess(), display_word(), is_word_complete()"""
+    """Run a Hangman Game."""
 
     word_list = read_in_words()
 
@@ -113,7 +113,7 @@ def game_time():
     else:
         game_word = random_word(hard_words(word_list))
 
-        print("The word contains {} letters".format(len(game_word)))
+    print("The word contains {} letters".format(len(game_word)))
     max_guesses = 8
     guess_list = []
     guesses_used = 0
